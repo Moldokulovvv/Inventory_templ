@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block body %}
+
+
+
+<div class="site-section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-8 mb-5" >
+
+
+              </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="site-section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-8 mb-5" >
+
+              <a href="{% url 'act-create-time' %}"><h1>Временная передача</h1></a>
+
+              <a href="{% url 'act-create' %}"><h1>Постоянная передача</h1></a>
+
+              </div>
+        </div>
+      </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,6 @@
+Django==3.1
+psycopg2-binary==2.8.5
+python-decouple
+Pillow==7.1
+django-ckeditor
+django-crispy-forms

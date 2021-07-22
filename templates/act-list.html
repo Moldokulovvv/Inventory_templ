@@ -1,0 +1,73 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block body %}
+
+
+
+
+
+
+
+<section class="ftco-section">
+			<div class="container">
+				<div class="row">
+
+
+{% for act in akts %}
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url({% static 'images/document.jpg' %});"></div>
+							</div>
+							<div class="text pt-3 text-center">
+								<a href="{% url 'act-detail' act.id %}"><h3>{{ act }}</h3></a>
+								{% if act.sender == request.user %}
+								<span class="position mb-2">Отправлено</span>
+								{% elif act.recipient == request.user %}
+								<span class="position mb-2">Получено</span>
+								{% endif %}
+
+								<div class="faded">
+									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+									<ul class="ftco-social text-center">
+
+
+<!--		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-twitter"></span></a></li>-->
+<!--		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-facebook"></span></a></li>-->
+<!--		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-google-plus"></span></a></li>-->
+<!--		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="icon-instagram"></span></a></li>-->
+		              </ul>
+	              </div>
+							</div>
+						</div>
+					</div>
+
+
+{% endfor %}
+				</div>
+			</div>
+		</section>
+
+
+
+		<section class="ftco-section contact-section">
+      <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+          <div class="col-md-12 mb-4">
+            <a href="{% url 'act-test' %}"><h2 class="h4">Добавить Акт +</h2></a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+<form method="get" action="{% url 'acts' %}">
+<input type="date" name="q">
+	<button type="submit">Submit</button>
+</form>
+
+
+
+{% endblock %}

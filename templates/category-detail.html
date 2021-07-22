@@ -1,0 +1,70 @@
+
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row">
+
+
+
+
+
+{% for invent in page_obj %}
+
+          <div class="col-md-4 ftco-animate">
+            <div class="blog-entry">
+                {% if invent.image %}
+              <a href="blog-single.html" class="block-20 d-flex align-items-end justify-content-end" style="background-image: url({{ invent.image.url }});">
+								<div class="meta-date text-center p-2">
+
+                  <span class="mos">Сер.Номер->{{ invent.serial_number }}</span>
+                                    <span class="mos">Инв.Номер->{{ invent.invent_number }}</span>
+                                    {% else %}
+
+                                                  <a href="blog-single.html" class="block-20 d-flex align-items-end justify-content-end" style="background-image: url({% static 'images/default_image.jpg' %});">
+								<div class="meta-date text-center p-2">
+
+                  <span class="mos">Сер.Номер->{{ invent.serial_number }}</span>
+                                    <span class="mos">Инв.Номер->{{ invent.invent_number }}</span>
+
+{% endif %}
+                </div>
+              </a>
+              <div class="text bg-white p-4">
+                <h3 class="heading"><a href="{% url 'detail' invent.id %}">{{ invent.title }}</a></h3>
+                <p>{{ invent.description }}</p>
+                <div class="d-flex align-items-center mt-4">
+	                <p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">{{ invent.institution }}</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+                {% endfor %}
+
+    <nav aria-label="...">
+  <ul class="pagination pagination-lg">
+    {% if page_obj.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+    {% endif %}
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">{{ page_obj.number }}</span>
+    </li>
+    {% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number}}">{{ page_obj.next_page_number}}</a></li>
+    {% endif %}
+  </ul>
+</nav>
+			</div>
+		</section>
+
+{% endblock %}

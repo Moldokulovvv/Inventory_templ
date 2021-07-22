@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+
+
+
+
+
+{% block body %}
+
+		<section class="ftco-section ftco-services">
+    	<div class="container">
+        <div class="row">
+            {% for category in categories %}
+
+  <div class="col-md-4 d-flex services align-self-stretch p-4 ftco-animate">
+            <div class="media block-6 d-block">
+                {% if category.image %}
+                <img src="{{ category.image.url }}" width="150" height="150">
+                {% else %}
+                <img src="{% static 'images/default_image.jpg' %}" width="150" height="150">
+                {% endif %}
+              <div class="media-body p-2 mt-3">
+                <h3 class="mb-4"><a href="{% url 'category' category.slug %}">{{ category.name }}</a></h3>
+                <p>{{ category.slug }}</p>
+              </div>
+            </div>
+
+
+
+          </div>
+
+            {% endfor %}
+        </div>
+    	</div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="utf-8">
+    <title>Example 1</title>
+    <link rel="stylesheet" href="{% static 'css1/style.css' %}" media="all" />
+  </head>
+  <body>
+    <header class="clearfix">
+
+      <h1>АКТ ПРИЕМА-ПЕРЕДАЧИ ОБОРУДОВАНИЯ</h1>
+      <div id="company" class="clearfix">
+        <h2>г.Бишкек</h2>
+
+      </div>
+      <div id="project">
+        <h2>12.04.2021г.</h2>
+
+      </div>
+    </header>
+
+    <div class="container">
+        <h2>Мы нижеподписавшиеся, в лице специалист {{ act.sender }}. с одной стороны и руководителя {{ act.recipient }}.К другой стороны, составили настоящий акт приема-передачи на временное использование нижеследующего оборудования.</h2>
+    </div>
+
+
+
+
+    <main>
+      <table>
+        <thead>
+          <tr>
+
+            <th class="desc">Наименование
+оборудования</th>
+
+            <th>Инвентарный №</th>
+              <th>Серийный №</th>
+
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in objs %}
+          <tr>
+
+            <td class="desc">{{ i.title }}</td>
+
+            <td class="qty">{{ i.invent_number }}</td>
+            <td class="total">{{ i.serial_number }}</td>
+          </tr>
+        {% endfor %}
+
+          <tr>
+            <td colspan="4">Кол-во: {{ objs.count }}</td>
+
+          </tr>
+          <tr>
+            <td colspan="4">TAX 0%</td>
+
+          </tr>
+
+          <tr>
+
+
+          </tr>
+
+
+        </tbody>
+
+      </table>
+
+    </main>
+
+
+
+      <main>
+      <table>
+        <thead>
+          <tr>
+            <th class="service">Передал: {{ act.sender }}.</th>
+
+
+
+
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+
+      </table>
+
+
+
+      <table>
+        <thead>
+          <tr>
+            <th class="service">Приняла: {{ act.recipient }}. </th>
+
+
+
+
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+
+      </table>
+
+    </main>
+
+  </body>
+</html>
